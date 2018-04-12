@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
       
     vat01.vm.provision "ansible" do |ansible|
       ansible.inventory_path="ansible/provision/inventory"
-      ansible.playbook = "ansible/playbook.xml"
+      ansible.playbook = "ansible/playbook.yml"
       ansible.groups = {
                         "build" => ["vat01"],
       }

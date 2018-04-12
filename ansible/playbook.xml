@@ -1,6 +1,0 @@
----
-- hosts: vat01
-  tasks: 
-    - name: install midnight commander
-      apt: name=mc
-      become: yes
