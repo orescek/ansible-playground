@@ -1,25 +1,8 @@
 ---
 - hosts: vat01
-  vars_files: 
-    - common_var.yml
   roles:
+    - role: HandyStuff
+    - role: Users
     - role: Java8
-  tasks: 
-    - name: install common software
-      package:
-        name:   "{{ item }}"
-        state:  present
-      with_items:
-        - mc
-        - git
-      become: yes
-
-    - name: create user 
-      user: 
-        name: "{{ user_name }}"
-        shell:  /bin/bash
-        state: present
-        password: "1"
-        update_password: always
-      become: yes
+  
 

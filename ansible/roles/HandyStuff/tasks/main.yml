@@ -1,0 +1,12 @@
+---
+  - name: Update repository
+    import_tasks: update.yml # found out how to enable this with some parameter
+  - name: install common software
+    package:
+      name:   "{{ item }}"
+      state:  present
+    with_items:
+      - mc
+      - vim
+      - git
+    become: yes

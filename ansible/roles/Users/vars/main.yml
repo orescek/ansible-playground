@@ -1,0 +1,5 @@
+---
+  user_data: 
+    - {username: "dejanl", password: "1"}
+    - {username: "dejanltest", password: "2"}
+  # end of user_data

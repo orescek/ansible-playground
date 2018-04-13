@@ -1,0 +1,11 @@
+---
+  - name: create user 
+    user: 
+      name: "{{ item.username }}"
+      shell:  /bin/bash
+      state: present
+      password: "{{ item.password }}"
+      update_password: always
+    become: yes
+    loop: "{{ user_data }}"
+

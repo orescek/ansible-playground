@@ -1,0 +1,7 @@
+---
+  - name: "Update all Packages"
+    package: 
+      name: "*"
+      force_apt_get: yes
+      state: latest
+    become: yes
