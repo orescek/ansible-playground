@@ -1,2 +1,2 @@
-- name: added in 2.4, previouslly you used 'include'
+- name: Java install
   import_tasks: java8.yml
