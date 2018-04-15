@@ -1,5 +1,11 @@
 ---
+
+#uAdd new user here
+# 
+# sudo: "Yes" --> it is not casesensitive so yes,YeS, ... are allowed
+#             --> Y or y also OK
+#      
   user_data: 
-    - {username: "dejanl", password: "1"}
-    - {username: "dejanltest", password: "2"}
-  # end of user_data
+    - {username: "dejanl" , sudo: "Yes", key: "some_key_thing"}
+    - {username: "dejan2"}
+  # end of user_data 

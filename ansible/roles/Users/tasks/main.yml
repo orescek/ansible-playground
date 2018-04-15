@@ -4,8 +4,43 @@
       name: "{{ item.username }}"
       shell:  /bin/bash
       state: present
-      password: "{{ item.password }}"
+      #group: "{{ item.username }}"
       update_password: always
     become: yes
     loop: "{{ user_data }}"
 
+  - name: "Add to sudoers"
+    lineinfile:
+      path: /etc/sudoers.d/{{ item.username }}
+      state: present
+      create: yes
+      line:  "{{ item.username }} ALL=(ALL) NOPASSWD: ALL"
+      validate: "/usr/sbin/visudo -cf %s"
+    when: item.sudo is defined and ( item.sudo|lower == "yes" or item.sudo|lower == "y" )
+    become: yes
+    loop: "{{ user_data }}"
+
+
+###########################################################################
+# If not sudo: "yes" sudo access will automaticaly not granted or rewoked #
+###########################################################################
+  - name: "Remove from sudoers"
+    file:
+      path: /etc/sudoers.d/{{ item.username }}
+      state: absent
+    when: 
+      - item.sudo is defined 
+      - item.sudo|lower != "yes"
+    become: yes
+    loop: "{{ user_data }}"
+
+  - name: "Add ssh_key"
+    lineinfile: 
+      path: /home/{{ item.username }}/.ssh/authorized_keys
+      state: present
+      create: yes
+      line: "{{ item.key }}"
+      mode: 0644
+    when: item.key is defined 
+    become: yes
+    loop:  "{{ user_data }}"
