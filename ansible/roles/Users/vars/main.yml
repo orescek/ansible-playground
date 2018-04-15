@@ -1,6 +1,5 @@
 ---
-
-#uAdd new user here
+#Add new user here
 # 
 # sudo: "Yes" --> it is not casesensitive so yes,YeS, ... are allowed
 #             --> Y or y also OK

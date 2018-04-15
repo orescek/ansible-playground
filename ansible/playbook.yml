@@ -4,5 +4,6 @@
     - role: HandyStuff
     - role: Users
     - role: Java8
+    - role: Jenkins
   
 
