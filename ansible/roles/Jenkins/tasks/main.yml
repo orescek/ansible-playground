@@ -16,3 +16,6 @@
       name: "jenkins"
       state: present
     become: yes
+
+  - name: "Install Plugins"
+    import_tasks: plugins.yml

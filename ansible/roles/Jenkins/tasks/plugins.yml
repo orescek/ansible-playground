@@ -1,0 +1,24 @@
+---
+  - name: "Install plugins"
+    jenkins_plugin:
+      name: "{{ item }}"
+      url_username: <somthing>
+      url_password: <somthing>
+      #url: http://localhost:8080
+      with_dependencies: yes
+    become: yes
+    with_items: 
+      - build-pipeline-plugin
+      - docker-plugin
+    register: pluginmodify
+
+
+###############
+# Restart only of plugin installed
+  - name: Restart Jenkins
+    service: 
+      name: jenkins 
+      state: restarted
+    become: yes
+    when: 
+      - pluginmodify.changed
