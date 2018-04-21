@@ -9,4 +9,6 @@
       - mc
       - vim
       - git
+      - curl 
+      - less
     become: yes

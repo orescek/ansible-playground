@@ -8,6 +8,14 @@
       update_password: always
     become: yes
     loop: "{{ user_data }}"
+    
+  - template:
+      src: .bash_profile.j2
+      dest: /home/{{ item.username }}/.bash_profile
+      mode: 0644
+      owner: "{{ item.username }}"
+    become: yes
+    loop: "{{ user_data }}"
 
   - name: "Add to sudoers"
     lineinfile:
